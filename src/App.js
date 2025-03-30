@@ -93,7 +93,7 @@ export default function App() {
 
   const handleDragOver = (event) => {
     console.log("handleDragOver", event);
-    setIsOver(!!event.over);
+    if (event.active.data.current.column !== 0) setIsOver(!!event.over);
   };
 
   const DroppableItem = ({ data }) => {
