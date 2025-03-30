@@ -12,6 +12,7 @@ export default function App() {
     [{ value: "D" }, { value: "E" }, { value: "F" }],
     [{ value: "G" }, { value: "H" }, { value: "I" }],
   ]);
+  const [isOver, setIsOver] = useState(false);
   const [dragItem, setDragItem] = useState();
 
   const dropAnimation = {
@@ -90,6 +91,11 @@ export default function App() {
     }
   };
 
+  const handleDragOver = (event) => {
+    console.log("handleDragOver", event);
+    setIsOver(!!event.over);
+  };
+
   const DroppableItem = ({ data }) => {
     if (!data) return <></>;
     const { row, column, value } = data;
@@ -111,7 +117,11 @@ export default function App() {
   };
 
   return (
-    <DndContext onDragStart={handleDragStart} onDragEnd={handleDragEnd}>
+    <DndContext
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+      onDragOver={handleDragOver}
+    >
       <DragOverlay style={{ width: "2.6em" }}>
         {dragItem && <Item data={dragItem} />}
       </DragOverlay>
