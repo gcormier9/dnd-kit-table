@@ -31,3 +31,7 @@ table th {
 .item-dragging {
   opacity: 0.25;
 }
+
+.item-over {
+  background-color: red;
+}
