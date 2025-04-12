@@ -1,17 +1,17 @@
-import Draggable from "./Draggable";
-
-const Item = ({ data, isOverlay, isOver }) => {
+const Item = ({ data, isDragging, isOverlay, isOver }) => {
   if (!data) return <></>;
   const { row, column, value } = data;
   return (
-    <Draggable
-      id={value}
-      data={{ row, column, value }}
-      isOverlay={isOverlay}
-      isOver={isOver}
+    <div
+      className={`item ${isDragging && "item-dragging"} ${
+        isOverlay && !isOver && "item-over"
+      }`}
     >
-      {value}
-    </Draggable>
+      <span>
+        <i className="bi bi-grip-vertical"></i>
+        {data.value}
+      </span>
+    </div>
   );
 };
 

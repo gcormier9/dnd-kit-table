@@ -29,7 +29,7 @@ table th {
 }
 
 .item-dragging {
-  opacity: 0.25;
+  opacity: 0.1;
 }
 
 .item-over {

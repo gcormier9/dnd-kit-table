@@ -14,7 +14,7 @@ const Draggable = ({ id, data, isOverlay, isOver, children }) => {
     >
       <span ref={setNodeRef} {...listeners} {...attributes}>
         <i className="bi bi-grip-vertical"></i>
-        {children}
+        {data.value}
       </span>
     </div>
   );

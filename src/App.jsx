@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { DndContext } from "@dnd-kit/core";
 import Droppable from "./Droppable";
+import Draggable from "./Draggable";
 
 import "./styles.css";
 import DraggableOverlay from "./DraggableOverlay";
@@ -57,9 +58,10 @@ export default function App() {
   const DroppableItem = ({ data }) => {
     if (!data) return <></>;
     const { row, column, value } = data;
+    const dragId = column === 0 ? Math.floor(Math.random() * 1000) : value;
     return (
       <Droppable id={value} data={{ row, column, value }}>
-        <Item data={data} />
+        <Draggable id={dragId} data={data} />
       </Droppable>
     );
   };
@@ -71,7 +73,12 @@ export default function App() {
       onDragOver={handleDragOver}
     >
       <DraggableOverlay>
-        <Item data={dragItem} isOverlay={true} isOver={isOver} />
+        <Item
+          id={dragItem?.value}
+          data={dragItem}
+          isOverlay={true}
+          isOver={isOver}
+        />
       </DraggableOverlay>
       <div>
         <table>
